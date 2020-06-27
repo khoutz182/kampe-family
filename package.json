@@ -1,0 +1,20 @@
+{
+  "name": "kampe-family",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "docker-build": "docker build -t kampe-family:latest .",
+    "docker-push": "docker tag kampe-family:latest rg.fr-par.scw.cloud/khmain/kampe-family:latest && docker push rg.fr-par.scw.cloud/khmain/kampe-family:latest"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
+    "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
+}
