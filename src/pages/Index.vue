@@ -2,19 +2,17 @@
   <Layout>
     <h1>Family Photos</h1>
 
-    <b-container fluid>
-      <b-row>
-        <b-col class="img-gallery" v-for="image in $page.photos.edges" :key="image.node.id">
-          <g-image
-                  @click="setSelectedphoto(image.node.id)"
-                  class="img-thumbnail"
-                  :src="image.node.thumbnail"
-                  :height="image.node.thumbnail.size.height"
-                  :title="image.node.title"
-                  v-b-modal:image-modal />
-        </b-col>
-      </b-row>
-    </b-container>
+    <b-row>
+      <b-col class="img-gallery" v-for="image in $page.photos.edges" :key="image.node.id">
+        <g-image
+                @click="setSelectedphoto(image.node.id)"
+                class="img-thumbnail"
+                :src="image.node.thumbnail"
+                :height="image.node.thumbnail.size.height"
+                :title="image.node.title"
+                v-b-modal:image-modal />
+      </b-col>
+    </b-row>
 
     <b-modal id="image-modal" :title="selectedPhoto.title" hide-footer>
       <figure class="figure">
@@ -38,7 +36,6 @@
         Download Fullsize Image
       </b-button>
     </b-modal>
-
   </Layout>
 </template>
 
@@ -61,8 +58,19 @@ query {
 </page-query>
 
 <script>
+import { BContainer, BCol, BRow, BModal, VBModal, BButton} from 'bootstrap-vue'
 export default {
   name: "KampeFamilyPhotos",
+  components: {
+    'b-col': BCol,
+    'b-row': BRow,
+    'b-container': BContainer,
+    'b-modal': BModal,
+    'b-button': BButton
+  },
+  directives: {
+    'b-modal': VBModal
+  },
   data () {
     return {
       selectedPhotoId: ''
@@ -82,7 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~bootstrap/scss/bootstrap";
+  @import "~bootstrap/scss/bootstrap-reboot";
+  @import "~bootstrap/scss/bootstrap-grid";
+  @import "~bootstrap/scss/images";
+  @import "~bootstrap/scss/buttons";
+
   .img-gallery {
     @extend .col;
     @extend .p-2;
